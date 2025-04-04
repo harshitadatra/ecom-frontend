@@ -1,12 +1,14 @@
+
 import axios from "axios";
 import { API_URL } from "../utilities/constants";
 
-async function loginService(email, password) {
+async function signUpService(firstName, lastName, email, password) {
     try {
-        const response = await axios.post(`${API_URL}/auth/login`, {
+        const response = await axios.post(`${API_URL}/auth/signup`, {
+            firstName: firstName,
+            lastName: lastName,
             email: email,
             password: password
-
         })
         if (response.status === 200) {
             return response.data
@@ -16,7 +18,7 @@ async function loginService(email, password) {
         }
     }
     catch (e) {
-        console.log("LoginService: Error in Login", e)
+        console.log("Signupservice: error in signup")
     }
 }
-export { loginService }
+export { signUpService }
